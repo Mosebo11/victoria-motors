@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Victoriya Motors - Japanese Car Dealers in Lesotho</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      /* Global Styles */
+      :root {
+        --primary-blue: #0056b3;
+        --secondary-red: #d62d20;
+        --dark-blue: #003366;
+        --light-gray: #f5f5f5;
+        --dark-gray: #333;
+        --white: #ffffff;
+        --black: #000000;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        line-height: 1.6;
+        color: var(--dark-gray);
+        background-color: var(--light-gray);
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: var(--secondary-red);
+        color: var(--white);
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        background-color: var(--primary-blue);
+        transform: translateY(-2px);
+      }
+
+      .btn-inquiry {
+        display: inline-block;
+        background-color: var(--primary-blue);
+        color: var(--white);
+        padding: 8px 15px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .btn-inquiry:hover {
+        background-color: var(--secondary-red);
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--primary-blue);
+        text-align: center;
+        position: relative;
+        padding-bottom: 15px;
+      }
+
+      h2::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: var(--secondary-red);
+      }
+
+      .subtitle {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 1.2rem;
+        color: var(--dark-gray);
+      }
+
+      section {
+        padding: 80px 0;
+      }
+
+      /* Header Styles */
+      header {
+        background-color: var(--white);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+      }
+
+      header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .logo img {
+        height: 60px;
+        width: auto;
+      }
+
+      .logo-text h1 {
+        color: var(--primary-blue);
+        font-size: 1.8rem;
+      }
+
+      .logo-text h1 span {
+        color: var(--secondary-red);
+      }
+
+      .logo-text p {
+        font-size: 0.9rem;
+        color: var(--dark-gray);
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav ul li {
+        margin-left: 30px;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: var(--dark-gray);
+        font-weight: 600;
+        transition: color 0.3s ease;
+      }
+
+      nav ul li a:hover {
+        color: var(--secondary-red);
+      }
+
+      .mobile-menu-btn {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+          url("bg.png")
+            no-repeat center center/cover;
+        height: 100vh;
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        text-align: center;
+        margin-top: 0;
+      }
+
+      .hero-content h2 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        color: var(--white);
+      }
+
+      .hero-content h2::after {
+        display: none;
+      }
+
+      .hero-content p {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+      }
+
+      /* About Section */
+      .about-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 50px;
+        margin-top: 40px;
+      }
+
+      .about-text {
+        flex: 1;
+      }
+
+      .about-text p {
+        margin-bottom: 20px;
+      }
+
+      .location {
+        margin-top: 30px;
+      }
+
+      .location h3 {
+        color: var(--secondary-red);
+        margin-bottom: 10px;
+      }
+
+      .location p {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .about-image {
+        flex: 1;
+      }
+
+      .about-image img {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Inventory Section */
+      .inventory {
+        background-color: var(--white);
+      }
+
+      .car-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      .car-card {
+        background-color: var(--white);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .car-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .car-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+      }
+
+      .car-info {
+        padding: 20px;
+      }
+
+      .car-info h3 {
+        color: var(--primary-blue);
+        margin-bottom: 10px;
+      }
+
+      .car-info p {
+        margin-bottom: 10px;
+        font-size: 0.9rem;
+      }
+
+      .price {
+        font-weight: bold;
+        color: var(--secondary-red);
+        font-size: 1.1rem !important;
+      }
+
+      .view-more {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      /* Contact Section */
+      .contact-content {
+        display: flex;
+        justify-content: space-between;
+        gap: 50px;
+        margin-top: 40px;
+      }
+
+      .contact-info {
+        flex: 1;
+      }
+
+      .info-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .info-item i {
+        font-size: 1.5rem;
+        color: var(--secondary-red);
+      }
+
+      .business-hours {
+        margin-top: 40px;
+      }
+
+      .business-hours h3 {
+        color: var(--secondary-red);
+        margin-bottom: 15px;
+      }
+
+      .business-hours p {
+        margin-bottom: 10px;
+      }
+
+      .contact-form {
+        flex: 1;
+        background-color: var(--white);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      /* Social Media Icons */
+      .social-icons {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        z-index: 999;
+      }
+
+      .social-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+        text-decoration: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+      }
+
+      .social-icon:hover {
+        transform: translateY(-5px);
+      }
+
+      .whatsapp {
+        background-color: #25d366;
+      }
+
+      .facebook {
+        background-color: #3b5998;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--dark-blue);
+        color: var(--white);
+        padding: 50px 0 20px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-bottom: 30px;
+      }
+
+      .footer-logo h3 {
+        color: var(--white);
+        margin-bottom: 10px;
+      }
+
+      .footer-logo p {
+        color: #ccc;
+      }
+
+      .footer-links h4,
+      .footer-contact h4 {
+        color: var(--white);
+        margin-bottom: 20px;
+        font-size: 1.2rem;
+      }
+
+      .footer-links ul {
+        list-style: none;
+      }
+
+      .footer-links ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links ul li a {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-links ul li a:hover {
+        color: var(--secondary-red);
+      }
+
+      .footer-contact p {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 15px;
+        color: #ccc;
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #ccc;
+        font-size: 0.9rem;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 992px) {
+        .about-content,
+        .contact-content {
+          flex-direction: column;
+        }
+
+        .about-image {
+          order: -1;
+        }
+      }
+
+      @media (max-width: 768px) {
+        nav ul {
+          display: none;
+          position: absolute;
+          top: 80px;
+          left: 0;
+          width: 100%;
+          background-color: var(--white);
+          flex-direction: column;
+          align-items: center;
+          padding: 20px 0;
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul.show {
+          display: flex;
+        }
+
+        nav ul li {
+          margin: 10px 0;
+        }
+
+        .mobile-menu-btn {
+          display: block;
+        }
+
+        .hero-content h2 {
+          font-size: 2.5rem;
+        }
+
+        .hero-content p {
+          font-size: 1.2rem;
+        }
+
+        section {
+          padding: 60px 0;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero-content h2 {
+          font-size: 2rem;
+        }
+
+        .hero-content p {
+          font-size: 1rem;
+        }
+
+        h2 {
+          font-size: 2rem;
+        }
+
+        .car-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .social-icons {
+          right: 10px;
+          bottom: 10px;
+        }
+
+        .social-icon {
+          width: 40px;
+          height: 40px;
+          font-size: 20px;
+        }
+
+        .brand-section {
+          margin-bottom: 50px;
+          position: relative;
+        }
+
+        .brand-title {
+          font-size: 2rem;
+          color: var(--primary-blue);
+          margin: 40px 0 25px;
+          padding-bottom: 15px;
+          position: relative;
+          text-align: center;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+
+        .brand-title::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 100px;
+          height: 3px;
+          background-color: var(--secondary-red);
+        }
+
+        .brand-logo {
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 40px;
+          height: 40px;
+          object-fit: contain;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="logo">
+          <img src="logo.jpg" alt="Pak Fazal Trading Logo" />
+          <div class="logo-text">
+            <h1>Victoriya <span>Motors</span></h1>
+         
+          </div>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#inventory">Inventory</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <div class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h2>Quality Japanese Cars at Affordable Prices</h2>
+          <p>Your trusted partner for reliable imported vehicles in Lesotho</p>
+          <a href="#inventory" class="btn">View Our Inventory</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="container">
+        <h2>About Victoriya Motors</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              Victoriya Motors is a premier dealer of Japanese imported cars
+              located in Maseru, Lesotho. We specialize in providing
+              high-quality, reliable vehicles at the most competitive prices in
+              the market.
+            </p>
+            <p>
+              With years of experience in the automotive industry, we've built a
+              reputation for honesty, transparency, and exceptional customer
+              service.
+            </p>
+            <div class="location">
+              <h3>Our Location</h3>
+              <p>
+                <i class="fas fa-map-marker-alt"></i> Khubetsoana, Opposite Puma
+                Garage, Maseru, Lesotho
+              </p>
+            </div>
+          </div>
+          <div class="about-image">
+            <img src="pakfazal.jpg" alt="Car dealership" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="inventory" class="inventory">
+      <div class="container">
+        <h2>Our Inventory</h2>
+        <p class="subtitle">Featured Vehicles in Stock</p>
+
+        <!-- Toyota Section -->
+        <div class="brand-section">
+          <h3 class="brand-title">
+            <!--   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Toyota_carlogo.svg/800px-Toyota_carlogo.svg.png" alt="Toyota Logo" class="brand-logo">
+      -->Toyota
+          </h3>
+          <div class="car-grid">
+            <div class="car-card">
+              <img src="yaris.png" alt="Toyota Hilux" />
+              <div class="car-info">
+                <h3>Toyota Yaris</h3>
+                <p>Very common, especially for business us</p>
+                <p>Diesel | 2.4L/2.8L Engine | 4x4</p>
+                <p class="price">Price: ----</p>
+                <a href="#contact" class="btn-inquiry">Inquire Now</a>
+              </div>
+            </div>
+
+            <div class="car-card">
+              <img src="noah.jpg" alt="Toyota Quantum" />
+              <div class="car-info">
+                <h3>Toyota Noah</h3>
+                <p>Popular choice for taxis and transport</p>
+                <p>Diesel | 2.5L/2.7L Engine | 7 Seater</p>
+                <p class="price">Price: ----</p>
+                <a href="#contact" class="btn-inquiry">Inquire Now</a>
+              </div>
+            </div>
+
+            <div class="car-card">
+              <img src="corolla.jpg" alt="Toyota Corolla" />
+              <div class="car-info">
+                <h3>Toyota Corolla</h3>
+                <p>Reliable sedan with excellent fuel efficiency</p>
+                <p>Automatic | 1.8L Engine | Comfortable</p>
+                <p class="price">Price: ----</p>
+                <a href="#contact" class="btn-inquiry">Inquire Now</a>
+              </div>
+            </div>
+
+            <div class="car-card">
+              <img src="vits.jpeg" alt="Toyota Vitz" />
+              <div class="car-info">
+                <h3>Toyota Vitz</h3>
+                <p>Compact and fuel-efficient city car</p>
+                <p>Automatic | 1.0L-1.5L Engine | Economical</p>
+                <p class="price">Price: ----</p>
+                <a href="#contact" class="btn-inquiry">Inquire Now</a>
+              </div>
+            </div>
+        
+          </div>
+        </div>
+
+        <!-- Volkswagen Section -->
+        <div class="brand-section">
+          <h3 class="brand-title">
+            <!--<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Volkswagen_logo_2019.svg/800px-Volkswagen_logo_2019.svg.png" alt="Volkswagen Logo" class="brand-logo">
+      -->Volkswagen
+          </h3>
+          <div class="car-grid">
+            <div class="car-card">
+              <img src="vivo.png" alt="VW Polo Vivo" />
+              <div class="car-info">
+                <h3>VW Polo Vivo</h3>
+                <p>Affordable and reliable compact car</p>
+                <p>1.4L-1.6L Engine | Manual/Automatic</p>
+                <p class="price">Price: ----</p>
+                <a href="#contact" class="btn-inquiry">Inquire Now</a>
+              </div>
+            </div>
+
+            <div class="car-card">
+              <img src="gti.jpeg" alt="VW Golf" />
+              <div class="car-info">
+                <h3>VW Golf</h3>
+                <p>Mostly Mk4, Mk5 models available</p>
+                <p>1.4L-2.0L Engine | Sporty Drive</p>
+                <p class="price">Price: ----</p>
+                <a href="#contact" class="btn-inquiry">Inquire Now</a>
+              </div>
+            </div>
+
+            <div class="car-card">
+              <img src="tsi.jpg" alt="VW Amarok" />
+              <div class="car-info">
+                <h3>VW TSI</h3>
+                <p>Powerful and comfortable pickup truck</p>
+                <p>2.0L Diesel | 4x4 | Double Cab</p>
+                <p class="price">Price: ----</p>
+                <a href="#contact" class="btn-inquiry">Inquire Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nissan Section -->
+        <div class="brand-section">
+          <h3 class="brand-title">
+            <!--<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Nissan_2020_logo.svg/800px-Nissan_2020_logo.svg.png" alt="Nissan Logo" class="brand-logo">
+      -->Nissan
+          </h3>
+          <div class="car-grid">
+            <div class="car-card">
+              <img src="pakfazal.jpg" alt="Nissan NP200" />
+              <div class="car-info">
+                <h3>Nissan NP200</h3>
+                <p>Practical and affordable utility vehicle</p>
+                <p>1.6L Petrol | Durable | Workhorse</p>
+                <p class="price">Price: ----</p>
+                <a href="#contact" class="btn-inquiry">Inquire Now</a>
+              </div>
+            </div>
+
+            <div class="car-card">
+              <img src="pakfazal.jpg" alt="Nissan X-Trail" />
+              <div class="car-info">
+                <h3>Nissan X-Trail</h3>
+                <p>Comfortable family SUV with good space</p>
+                <p>2.0L-2.5L Engine | SUV | 5/7 Seater</p>
+                <p class="price">Price: ----</p>
+                <a href="#contact" class="btn-inquiry">Inquire Now</a>
+              </div>
+            </div>
+
+            <div class="car-card">
+              <img src="pakfazal.jpg" alt="Nissan March" />
+              <div class="car-info">
+                <h3>Nissan March</h3>
+                <p>Compact city car with great maneuverability</p>
+                <p>1.2L-1.5L Engine | Automatic | Economical</p>
+                <p class="price">Price: ----</p>
+                <a href="#contact" class="btn-inquiry">Inquire Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mazda Section -->
+        <div class="brand-section">
+          <h3 class="brand-title">
+            <!--<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Mazda_logo.svg/800px-Mazda_logo.svg.png" alt="
